@@ -14,11 +14,13 @@ class Node(object):
 class Tree(object):
     """A Binary Search Tree."""
 
-    def __init__(self):
+    def __init__(self, iterable=None):
         self._root = None
         self.left_depth = 0
         self.right_depth = 0
         self._size = 0
+        if isinstance(iterable, (list, tuple)):
+            [self.insert(item) for item in iterable]
 
     def insert(self, val):
         """Insert a new node into the Tree containing the given value."""
