@@ -24,28 +24,24 @@ class Tree(object):
 
     def insert(self, val):
         """Insert a new node into the Tree containing the given value."""
-        new_node = Node(val)
         if self._root is None:
-            self._root = new_node
+            self._root = Node(val)
             self._size += 1
             return
+        new_node = Node(val)
         curr = self._root
         while curr:
             if new_node.val > curr.val:
                 if curr.right_leaf is None:
                     curr.right_leaf = new_node
-                    curr.right_leaf.depth = curr.depth + 1
-                    if curr.right_leaf.depth > self.right_depth:
-                        self.right_depth += 1
                     break
+                curr.depth = curr.right_leaf.depth + 1
                 curr = curr.right_leaf
             else:
                 if curr.left_leaf is None:
                     curr.left_leaf = new_node
-                    curr.left_leaf.depth = curr.depth + 1
-                    if curr.left_leaf.depth > self.left_depth:
-                        self.left_depth += 1
                     break
+                curr.depth = curr.left_leaf.depth + 1
                 curr = curr.left_leaf
         self._size += 1
 
@@ -77,9 +73,7 @@ class Tree(object):
 
     def depth(self):
         """Return the depth level of the Tree."""
-        if self.right_depth > self.left_depth:
-            return self.right_depth
-        return self.left_depth
+        return self._root.depth
 
     def contains(self, val):
         """Return True if the given value is in the Tree, otherwise return False."""

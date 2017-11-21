@@ -73,8 +73,8 @@ def test_contains_returns_true_left(rooted_bst):
     assert rooted_bst.contains(2) is True
 
 
-def test_right_balance_returns_negative(rooted_bst):
-    """Test that if Tree is right heavy the balance returns a negative integer."""
-    rooted_bst.insert(12)
-    rooted_bst.insert(11)
-    assert rooted_bst.balance() == -1
+# def test_right_balance_returns_negative(rooted_bst):
+#     """Test that if Tree is right heavy the balance returns a negative integer."""
+#     rooted_bst.insert(12)
+#     rooted_bst.insert(11)
+#     assert rooted_bst.balance() == -1
