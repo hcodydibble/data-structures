@@ -32,11 +32,17 @@ class Tree(object):
             if new_node.val > curr.val:
                 if curr.right_leaf is None:
                     curr.right_leaf = new_node
+                    curr.right_leaf.depth = curr.depth + 1
+                    if curr.right_leaf.depth > self.right_depth:
+                        self.right_depth += 1
                     break
                 curr = curr.right_leaf
             else:
                 if curr.left_leaf is None:
                     curr.left_leaf = new_node
+                    curr.left_leaf.depth = curr.depth + 1
+                    if curr.left_leaf.depth > self.left_depth:
+                        self.left_depth += 1
                     break
                 curr = curr.left_leaf
         self._size += 1
@@ -62,6 +68,16 @@ class Tree(object):
     def size(self):
         """Return the size of the Tree."""
         return self._size
+
+    def balance(self):
+        """Return positive or negative integer depending on the balance."""
+        return self.left_depth - self.right_depth
+
+    def depth(self):
+        """Return the depth level of the Tree."""
+        if self.right_depth > self.left_depth:
+            return self.right_depth
+        return self.left_depth
 
     def contains(self, val):
         """Return True if the given value is in the Tree, otherwise return False."""
