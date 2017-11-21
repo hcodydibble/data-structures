@@ -1,4 +1,5 @@
 """Test functions for the Binary Search Tree."""
+import random
 
 
 def test_insert_adds_first_new_node_as_root(empty_bst):
@@ -71,3 +72,9 @@ def test_contains_returns_true_left(rooted_bst):
     rooted_bst.insert(1)
     assert rooted_bst.contains(2) is True
 
+
+def test_right_balance_returns_negative(rooted_bst):
+    """Test that if Tree is right heavy the balance returns a negative integer."""
+    rooted_bst.insert(12)
+    rooted_bst.insert(11)
+    assert rooted_bst.balance() == -1
