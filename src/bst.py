@@ -34,14 +34,20 @@ class Tree(object):
             if new_node.val > curr.val:
                 if curr.right_leaf is None:
                     curr.right_leaf = new_node
+                    curr.right_leaf.depth = curr.depth + 1
+                    if val > self._root.val:
+                        if curr.right_leaf.depth > self.right_depth:
+                            self.right_depth += 1
                     break
-                curr.depth = curr.right_leaf.depth + 1
                 curr = curr.right_leaf
             else:
                 if curr.left_leaf is None:
                     curr.left_leaf = new_node
+                    curr.left_leaf.depth = curr.depth + 1
+                    if val < self._root.val:
+                        if curr.left_leaf.depth > self.left_depth:
+                            self.left_depth += 1
                     break
-                curr.depth = curr.left_leaf.depth + 1
                 curr = curr.left_leaf
         self._size += 1
 
@@ -73,7 +79,9 @@ class Tree(object):
 
     def depth(self):
         """Return the depth level of the Tree."""
-        return self._root.depth
+        if self.right_depth > self.left_depth:
+            return self.right_depth
+        return self.left_depth
 
     def contains(self, val):
         """Return True if the given value is in the Tree, otherwise return False."""
