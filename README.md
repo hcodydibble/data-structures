@@ -3,8 +3,8 @@
 # Python Data Structures
 
 This repo is here to hold all the data structures I write, or at least attempt to write, in my never-ending
-pursuit of knowledge in the world of development. Previous works were done with [Adrienne](http://github.com/adriennekarnoski)
-and are thus pushed up on her [data-structures repo](http://github.com/adriennekarnoski/data-structures) and mine
+pursuit of knowledge in the world of development. Previous works were done with [Adrienne](https://github.com/adriennekarnoski)
+and are thus pushed up on her [data-structures repo](https://github.com/adriennekarnoski/data-structures) and mine
 will be starting with the Binary Search Tree.
 
 **Installation**:
@@ -12,7 +12,7 @@ will be starting with the Binary Search Tree.
 In case you feel like pulling this down and making the code better, writing more tests to attempt to disprove my
 knowledge of these data structures or you just want to mess around in it there are just a few steps you need to follow.
 
-- `$ git clone http://github.com/hcodydibble/data-structures.git`
+- `$ git clone https://github.com/hcodydibble/data-structures.git`
 - `$ cd data-structures/`
 - `$ pip install -e .` (The -e is so any changes you make will immediately affect the package without needing to reinstall)
 
@@ -24,5 +24,23 @@ To run the tests (and to see my amazing coverage and all those precious precious
 - `$ pip install -e .[test]`
 - `$ tox`
 
+## Author
 
-## Binary Search Tree
+The author is me, Cody! I'm working under the assumption that you are already on my [github](https://github.com/hcodydibble)
+but linking things with Markdown is fun so there is another one. If you want to follow/watch/stalk me on anything else social
+media related you can find me on [Linkedin](https://www.linkedin.com/in/codydibble/), [Twitter](https://twitter.com/hcodydibble),
+or [Facebook](https://www.facebook.com/hcodydibble).
+
+
+## Big O Notations
+
+**Binary Search Tree**
+
+- `.insert()` - O(n)
+- `.search()` - O(n)
+- `.size()` - O(1)
+- `.balance()` - O(1)
+- `.depth()` - O(1)
+- `.contains()` - O(n)
+
+(It seems most of these will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
