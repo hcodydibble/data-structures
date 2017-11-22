@@ -73,8 +73,35 @@ def test_contains_returns_true_left(rooted_bst):
     assert rooted_bst.contains(2) is True
 
 
-# def test_right_balance_returns_negative(rooted_bst):
-#     """Test that if Tree is right heavy the balance returns a negative integer."""
-#     rooted_bst.insert(12)
-#     rooted_bst.insert(11)
-#     assert rooted_bst.balance() == -1
+def test_right_balance_returns_negative(rooted_bst):
+    """Test that if Tree is right heavy the balance returns a negative integer."""
+    rooted_bst.insert(12)
+    rooted_bst.insert(11)
+    assert rooted_bst.balance() == -1
+
+
+def test_contains_returns_true_on_root(rooted_bst):
+    """Test that the contain method returns True if the value looked for is the root."""
+    assert rooted_bst.contains(10) is True
+
+
+def test_depth_returns_correct_depths(rooted_bst):
+    """Test that depth returns the correct number.
+
+        Sacrificing dots for efficiency.
+    """
+    rooted_bst.insert(11)
+    assert rooted_bst.depth() == 1
+    rooted_bst.insert(9)
+    assert rooted_bst.depth() == 1
+    rooted_bst.insert(12)
+    assert rooted_bst.depth() == 2
+
+
+def test_search_returns_from_right_side(rooted_bst):
+    """Test that search will return from the right side of the Tree."""
+    rooted_bst.insert(12)
+    rooted_bst.insert(11)
+    rooted_bst.insert(13)
+    rooted_bst.insert(15)
+    assert rooted_bst.search(13)
