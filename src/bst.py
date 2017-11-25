@@ -116,8 +116,7 @@ class Tree(object):
 
     def pre_order(self):
         """Return a generator that will yield the Tree's values using pre-order traversal."""
-        stack = []
-        stack.append(self._root)
+        stack = [self._root]
         while stack:
             node = stack.pop()
             yield node.val

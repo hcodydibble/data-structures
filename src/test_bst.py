@@ -1,5 +1,4 @@
 """Test functions for the Binary Search Tree."""
-import random
 
 
 def test_insert_adds_first_new_node_as_root(empty_bst):
@@ -105,3 +104,34 @@ def test_search_returns_from_right_side(rooted_bst):
     rooted_bst.insert(13)
     rooted_bst.insert(15)
     assert rooted_bst.search(13)
+
+
+def test_in_order_traversal_yields_something(traversal_bst):
+    """Test that the in-order traversal returns something."""
+    assert traversal_bst.in_order()
+
+
+def test_in_order_traversal_returns_value(traversal_bst):
+    """Test that the in-order traversal returns the first value."""
+    value = traversal_bst.in_order()
+    assert next(value) == 0
+
+
+def test_in_order_traversal_returns_correct_order(traversal_bst):
+    """Test that the in-order traversal return values in the correct order."""
+    assert [i for i in traversal_bst.in_order()] == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+
+def test_pre_order_traversal_returns_correct_order(traversal_bst):
+    """Test that the pre-order traversal returns values in the correct order."""
+    assert [i for i in traversal_bst.pre_order()] == [7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10]
+
+
+def test_post_order_traversal_returns_correct_order(traversal_bst):
+    """Test that the pre-order traversal returns values in the correct order."""
+    assert [i for i in traversal_bst.post_order()] == [0, 2, 4, 6, 5, 3, 1, 8, 10, 9, 7]
+
+
+def test_breadth_first_traversal_returns_correct_order(traversal_bst):
+    """Test that the pre-order traversal returns values in the correct order."""
+    assert [i for i in traversal_bst.breadth_first()] == [7, 1, 9, 0, 3, 8, 10, 2, 5, 4, 6]

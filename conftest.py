@@ -15,3 +15,10 @@ def rooted_bst():
     tree = Tree()
     tree.insert(10)
     return tree
+
+
+@pytest.fixture
+def traversal_bst():
+    from bst import Tree
+    tree = Tree([7, 1, 9, 0, 3, 8, 10, 2, 5, 4, 6])
+    return tree
