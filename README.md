@@ -42,5 +42,9 @@ or [Facebook](https://www.facebook.com/hcodydibble).
 - `.balance()` - O(1)
 - `.depth()` - O(1)
 - `.contains()` - O(n)
+- `.in_order()` - O(n)
+- `pre_order()` - O(n)
+- `.post_order()` - O(n)
+- `breadth_first()`- O(n)
 
 (It seems most of these will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
