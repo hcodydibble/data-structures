@@ -100,3 +100,57 @@ class Tree(object):
                     curr = curr.left_leaf
         except AttributeError:
             return False
+
+    def in_order(self):
+        """Return a generator that will yield the Tree's values using in-order traversal."""
+        stack = []
+        node = self._root
+        while stack or node:
+            if node:
+                stack.append(node)
+                node = node.left_leaf
+            else:
+                node = stack.pop()
+                yield node.val
+                node = node.right_leaf
+
+    def pre_order(self):
+        """Return a generator that will yield the Tree's values using pre-order traversal."""
+        stack = []
+        stack.append(self._root)
+        while stack:
+            node = stack.pop()
+            yield node.val
+            if node.right_leaf: stack.append(node.right_leaf)
+            if node.left_leaf: stack.append(node.left_leaf)
+
+    def post_order(self):
+        """Return a generator that will yield the Tree's values using post-order traversal."""
+        visited = []
+        stack = []
+        node = self._root
+        while stack or node:
+            if node:
+                stack.append(node)
+                node = node.left_leaf
+            else:
+                node = stack.pop()
+                if node.right_leaf and node.right_leaf not in visited:
+                    stack.append(node)
+                    node = node.right_leaf
+                else:
+                    visited.append(node)
+                    yield node.val
+                    node = None
+
+    def breadth_first(self):
+        """Return a generator that will yield the Tree's values using breadth-first traversal."""
+        stack = [self._root]
+        while stack:
+            node = stack[0]
+            stack = stack[1:]
+            yield node.val
+            if node.left_leaf:
+                stack.append(node.left_leaf)
+            if node.right_leaf:
+                stack.append(node.right_leaf)
