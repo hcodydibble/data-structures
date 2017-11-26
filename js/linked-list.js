@@ -24,7 +24,7 @@ module.exports = class LinkedList {
 
     pop(){
         if(this.head === null){
-            throw 'IndexError: Nothing to pop.';
+            throw new Error('IndexError: Nothing to pop.');
         }
         let output = this.head;
         this.head = this.head.next;
@@ -52,7 +52,7 @@ module.exports = class LinkedList {
         let previousNode = null;
         let found = false;
         if(currentNode === null){
-            throw 'IndexError: Nothing in the list.';
+            throw new Error('IndexError: Nothing in the list.');
         }
         try{
             while(currentNode && found === false){
@@ -71,7 +71,7 @@ module.exports = class LinkedList {
                 previousNode.next = currentNode.next;
             }
         }catch(e){
-            throw 'ValueError: No such Node.';
+            throw new Error('ValueError: No such Node.');
         }
         this._counter --;
     }
