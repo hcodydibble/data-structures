@@ -80,4 +80,19 @@ describe("linked-list.js tests", function(){
         }
         expect(aList.display()).to.be.an("array").and.to.include.ordered.members([4, 3, 2, 1, 0]);
     });
+
+    it("linked list iterable works", function(){
+        let aList = new List([1, 2, 3, 4]);
+       expect(aList.size()).to.equal(4); 
+    });
+
+    it("remove on empty list throws error", function(){
+        let aList = new List();
+        expect(aList.remove).to.throw();
+    });
+
+    it("pop on empty list throws error", function(){
+        let aList = new List();
+        expect(aList.pop).to.throw();
+    });
 });

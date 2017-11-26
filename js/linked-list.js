@@ -94,7 +94,7 @@ module.exports = class LinkedList {
 if(require.main === module){
     var list = require("./linked-list");
     var aList = new list();
-    aList.pop();
+    console.log(aList.head);
     // console.log(list.display());
     // console.log(list.size());
 }
