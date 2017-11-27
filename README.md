@@ -48,3 +48,23 @@ or [Facebook](https://www.facebook.com/hcodydibble).
 - `breadth_first()`- O(n)
 
 (It seems most of these will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
+
+# JavaScript Data Structures
+
+**Installation**:
+
+Same as with my Python data structures, if you feel like pulling this down and playing around with it there's only a few things to do!
+
+- `$ git clone https://github.com/hcodydibble/data-structures.git`
+- `$ cd data-structures/js/`
+- `$ npm install data-structures`
+
+**Tests***:
+
+This is also essentially the same as Python except there is no need to do anymore installing (hopefully).
+
+- `$ mocha test`
+
+It's that simple! If you want to run your tests like I do just type
+
+`$ mocha test --reporter nyan`
