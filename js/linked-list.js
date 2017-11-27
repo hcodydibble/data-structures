@@ -7,7 +7,7 @@ class Node {
     }
 }
 
-module.exports = class LinkedList {
+class LinkedList {
     constructor(iterable=null) {
         this.head = null;
         this._counter = 0;
@@ -90,11 +90,10 @@ module.exports = class LinkedList {
         return this._counter;
     }
 };
+module.exports = LinkedList;
 
 if(require.main === module){
-    var list = require("./linked-list");
-    var aList = new list();
-    console.log(aList.head);
-    // console.log(list.display());
-    // console.log(list.size());
+    var list = new LinkedList([1,3, 2, 6, 10]);
+    console.log(list.display());
+    console.log(list.size());
 }
