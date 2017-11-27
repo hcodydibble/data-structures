@@ -3,8 +3,11 @@
 const LL = require("./linked-list");
 
 class Stack {
-    constructor(){
+    constructor(iterable=null){
         this.linked = new LL();
+        if(Array.isArray(iterable)){
+            iterable.map(x => this.push(x));
+        }
     }
 
     push(val){

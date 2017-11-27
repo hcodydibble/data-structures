@@ -43,4 +43,9 @@ describe("stack.js tests", function(){
         let s = new Stack();
         expect(s.size()).to.equal(0);
     });
+
+    it("stack takes an iterable", function(){
+       let s = new Stack([1, 2, 3, 4]); 
+       expect(s.size()).to.equal(4);
+    });
 });
