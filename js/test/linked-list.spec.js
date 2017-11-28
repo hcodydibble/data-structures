@@ -81,7 +81,7 @@ describe("linked-list.js tests", function(){
     it("display displays correctly", function(){
         let aList = new linkedList.LinkedList();
         for (var i = 0; i < 5; i++) {
-            list.push(i);
+            aList.push(i);
         }
         expect(aList.display()).to.be.string('4, 3, 2, 1, 0');
     });
