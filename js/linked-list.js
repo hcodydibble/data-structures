@@ -2,8 +2,8 @@
 
 class Node {
     constructor(data, next=null){
-        this.data = data;
-        this.next = next;
+        this.data = data
+        this.next = next
     }
 }
 
@@ -12,19 +12,18 @@ class LinkedList {
         this.head = null;
         this._counter = 0;
         if(Array.isArray(iterable)){
-            iterable.map(x => this.push(x));
+            iterable.forEach(x => this.push(x));
         }
     }
 
     push(val){
-        let newHead = new Node(val, this.head);
-        this.head = newHead;
+        this.head = new Node(val, this.head);
         this._counter ++;
     }
 
     pop(){
         if(this.head === null){
-            throw new Error('IndexError: Nothing to pop.');
+            return undefined;
         }
         let output = this.head;
         this.head = this.head.next;
@@ -37,7 +36,7 @@ class LinkedList {
         try{
             while(this.head){
                 if(val === searchThrough.data){
-                    return searchThrough.data;
+                    return searchThrough;
                 }else{
                     searchThrough = searchThrough.next;
                 }
@@ -55,7 +54,7 @@ class LinkedList {
             throw new Error('IndexError: Nothing in the list.');
         }
         try{
-            while(currentNode && found === false){
+            while(currentNode && !found){
                 if(val === currentNode.data){
                     found = true;
                 }else{
@@ -83,17 +82,20 @@ class LinkedList {
             displayThis.push(node.data);
             node = node.next;
         }
-        return displayThis;
+        return displayThis.join(", ");
     }
 
     size(){
         return this._counter;
     }
-};
-module.exports = LinkedList;
+}
 
+module.exports = {LinkedList,
+                  Node};
+
+/* istanbul ignore next */
 if(require.main === module){
-    var list = new LinkedList([1,3, 2, 6, 10]);
+    var list = new LinkedList([1, 2, 3, 4]);
     console.log(list.display());
     console.log(list.size());
 }
