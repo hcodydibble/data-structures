@@ -91,8 +91,13 @@ describe("linked-list.js tests", function(){
        expect(aList.size()).to.equal(4); 
     });
 
-    it("remove on empty list throws error", function(){
+    it("remove on empty list returns undefined", function(){
         let aList = new linkedList.LinkedList();
-        expect(aList.remove).to.throw();
+        expect(aList.remove()).to.be.undefined;
+    });
+
+    it("remove returns string saying no node", function(){
+        let aList = new linkedList.LinkedList([1, 2, 3, 4, 5]);
+        expect(aList.remove(9)).to.be.string('No Node contains the given value.');
     });
 });

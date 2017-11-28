@@ -61,7 +61,7 @@ Same as with my Python data structures, if you feel like pulling this down and p
 
 **Tests***:
 
-This turned out to be waaaay easier than I thought. Since npm init gives you script commands you just need to type the following
+This turned out to be waaaay easier than I thought. Since npm init gives you script commands you just need to type the following (and make sure you're still in the js/ directory)
 
 `$ npm test`
 

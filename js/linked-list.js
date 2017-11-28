@@ -50,9 +50,6 @@ class LinkedList {
         let currentNode = this.head;
         let previousNode = null;
         let found = false;
-        if(currentNode === null){
-            throw new Error('IndexError: Nothing in the list.');
-        }
         try{
             while(currentNode && !found){
                 if(val === currentNode.data){
@@ -70,7 +67,7 @@ class LinkedList {
                 previousNode.next = currentNode.next;
             }
         }catch(e){
-            throw new Error('ValueError: No such Node.');
+            return 'No Node contains the given value.';
         }
         this._counter --;
     }
@@ -98,4 +95,5 @@ if(require.main === module){
     var list = new LinkedList([1, 2, 3, 4]);
     console.log(list.display());
     console.log(list.size());
+    console.log(list.remove(6));
 }
