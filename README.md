@@ -61,10 +61,10 @@ Same as with my Python data structures, if you feel like pulling this down and p
 
 **Tests***:
 
-This is also essentially the same as Python except there is no need to do anymore installing (hopefully).
+This turned out to be waaaay easier than I thought. Since npm init gives you script commands you just need to type the following
 
-- `$ mocha test`
+`$ npm test`
 
-It's that simple! If you want to run your tests like I do just type
+And if you would like to see my actual coverage
 
-`$ mocha test --reporter nyan`
+`$ npm run covered_test`
