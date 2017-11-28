@@ -93,6 +93,7 @@ class LinkedList {
 module.exports = {LinkedList,
                   Node};
 
+/* istanbul ignore next */
 if(require.main === module){
     var list = new LinkedList([1, 2, 3, 4]);
     console.log(list.display());

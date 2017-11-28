@@ -105,3 +105,4 @@ ENV/
 
 # javascript
 node_modules/
+.nyc_output/
