@@ -2,29 +2,28 @@
 
 class Node {
     constructor(data, next=null){
-        this.data = data;
-        this.next = next;
+        this.data = data
+        this.next = next
     }
 }
 
-module.exports = class LinkedList {
+class LinkedList {
     constructor(iterable=null) {
         this.head = null;
         this._counter = 0;
         if(Array.isArray(iterable)){
-            iterable.map(x => this.push(x));
+            iterable.forEach(x => this.push(x));
         }
     }
 
     push(val){
-        let newHead = new Node(val, this.head);
-        this.head = newHead;
+        this.head = new Node(val, this.head);
         this._counter ++;
     }
 
     pop(){
         if(this.head === null){
-            throw new Error('IndexError: Nothing to pop.');
+            return undefined;
         }
         let output = this.head;
         this.head = this.head.next;
@@ -37,7 +36,7 @@ module.exports = class LinkedList {
         try{
             while(this.head){
                 if(val === searchThrough.data){
-                    return searchThrough.data;
+                    return searchThrough;
                 }else{
                     searchThrough = searchThrough.next;
                 }
@@ -55,7 +54,7 @@ module.exports = class LinkedList {
             throw new Error('IndexError: Nothing in the list.');
         }
         try{
-            while(currentNode && found === false){
+            while(currentNode && !found){
                 if(val === currentNode.data){
                     found = true;
                 }else{
@@ -83,18 +82,19 @@ module.exports = class LinkedList {
             displayThis.push(node.data);
             node = node.next;
         }
-        return displayThis;
+        return displayThis.join(", ");
     }
 
     size(){
         return this._counter;
     }
-};
+}
+
+module.exports = {LinkedList,
+                  Node};
 
 if(require.main === module){
-    var list = require("./linked-list");
-    var aList = new list();
-    console.log(aList.head);
-    // console.log(list.display());
-    // console.log(list.size());
+    var list = new LinkedList([1, 2, 3, 4]);
+    console.log(list.display());
+    console.log(list.size());
 }
