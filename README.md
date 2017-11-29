@@ -1,12 +1,19 @@
 [![Build Status](https://travis-ci.org/hcodydibble/data-structures.svg?branch=master)](https://travis-ci.org/hcodydibble/data-structures)[![Coverage Status](https://coveralls.io/repos/github/hcodydibble/data-structures/badge.svg?branch=master)](https://coveralls.io/github/hcodydibble/data-structures?branch=master)
 
-# Python Data Structures
+#Data Structures
 
 This repo is here to hold all the data structures I write, or at least attempt to write, in my never-ending
 pursuit of knowledge in the world of development. Previous works were done with [Adrienne](https://github.com/adriennekarnoski)
 and are thus pushed up on her [data-structures repo](https://github.com/adriennekarnoski/data-structures) and mine
-will be starting with the Binary Search Tree.
+will be starting with the Binary Search Tree (in Python, JavaScript started LinkedList).
 
+## Author
+
+The author is me, Cody! I'm working under the assumption that you are already on my [github](https://github.com/hcodydibble)
+but linking things with Markdown is fun so there is another one. If you want to follow/watch/stalk me on anything else social
+media related you can find me on [Linkedin](https://www.linkedin.com/in/codydibble/), [Twitter](https://twitter.com/hcodydibble),
+or [Facebook](https://www.facebook.com/hcodydibble).
+## Python
 **Installation**:
 
 In case you feel like pulling this down and making the code better, writing more tests to attempt to disprove my
@@ -24,15 +31,18 @@ To run the tests (and to see my amazing coverage and all those precious precious
 - `$ pip install -e .[test]`
 - `$ tox`
 
-## Author
-
-The author is me, Cody! I'm working under the assumption that you are already on my [github](https://github.com/hcodydibble)
-but linking things with Markdown is fun so there is another one. If you want to follow/watch/stalk me on anything else social
-media related you can find me on [Linkedin](https://www.linkedin.com/in/codydibble/), [Twitter](https://twitter.com/hcodydibble),
-or [Facebook](https://www.facebook.com/hcodydibble).
 
 
-## Big O Notations
+### Big O Notations
+
+**Doubly Linked List**:
+
+- `.push(val)` - O(1)
+- `.append(val)` - O(1)
+- `.pop()` - O(1)
+- `.shift()` - O(1)
+- `.size()` - O(1)
+- `.remove(val)` - O(n)
 
 **Binary Search Tree**
 
@@ -48,9 +58,9 @@ or [Facebook](https://www.facebook.com/hcodydibble).
 - `.breadth_first()`- O(n)
 - `.delete(val)` - O(n)
 
-(It seems most of these will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
+(It seems most of the Binary Tree will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
 
-# JavaScript Data Structures
+## JavaScript Data Structures
 
 **Installation**:
 
