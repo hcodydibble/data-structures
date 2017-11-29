@@ -160,6 +160,27 @@ class Tree(object):
 
     def delete(self, val):
         """Delete the Node containing the given value."""
+        """Keeping this because it is hilarious to me."""
+        node_holder = [node for node in self._delete_helper()]
+        for node in node_holder:
+            if node.val == val:
+                node_holder.remove(node)
+        self._root.left_leaf = None
+        self._root.right_leaf = None
+        self._root = None
+        [self.insert(node.val) for node in node_holder]
+
+    def _delete_helper(self):
+        """Return a generator that will yield the Tree's nodes using breadth-first traversal."""
+        stack = [self._root]
+        while stack:
+            node = stack[0]
+            stack = stack[1:]
+            yield node
+            if node.left_leaf:
+                stack.append(node.left_leaf)
+            if node.right_leaf:
+                stack.append(node.right_leaf)
         # if self.search(val):
         #     delete_me = self.search(val)
         # else:
@@ -206,27 +227,6 @@ class Tree(object):
         #         delete_me.parent.right_leaf = None
         # self._size -= 1
 
-        """Keeping this because it is hilarious to me."""
-        node_holder = [node for node in self._delete_helper()]
-        for node in node_holder:
-            if node.val == val:
-                node_holder.remove(node)
-        self._root.left_leaf = None
-        self._root.right_leaf = None
-        self._root = None
-        [self.insert(node.val) for node in node_holder]
-
-        def _delete_helper(self):
-            """Return a generator that will yield the Tree's nodes using breadth-first traversal."""
-            stack = [self._root]
-            while stack:
-                node = stack[0]
-                stack = stack[1:]
-                yield node
-                if node.left_leaf:
-                    stack.append(node.left_leaf)
-                if node.right_leaf:
-                    stack.append(node.right_leaf)
 
 
 if __name__ == '__main__':  # pragma: no cover
