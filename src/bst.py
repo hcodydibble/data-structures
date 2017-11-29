@@ -4,8 +4,9 @@
 class Node(object):
     """A node object."""
 
-    def __init__(self, val, left_leaf=None, right_leaf=None):
+    def __init__(self, val, parent=None, left_leaf=None, right_leaf=None):
         self.val = val
+        self.parent = parent
         self.left_leaf = left_leaf
         self.right_leaf = right_leaf
         self.depth = 0
@@ -33,6 +34,7 @@ class Tree(object):
         while curr:
             if new_node.val > curr.val:
                 if curr.right_leaf is None:
+                    new_node.parent = curr
                     curr.right_leaf = new_node
                     curr.right_leaf.depth = curr.depth + 1
                     if val > self._root.val:
@@ -42,6 +44,7 @@ class Tree(object):
                 curr = curr.right_leaf
             else:
                 if curr.left_leaf is None:
+                    new_node.parent = curr
                     curr.left_leaf = new_node
                     curr.left_leaf.depth = curr.depth + 1
                     if val < self._root.val:
@@ -149,6 +152,30 @@ class Tree(object):
             node = stack[0]
             stack = stack[1:]
             yield node.val
+            if node.left_leaf:
+                stack.append(node.left_leaf)
+            if node.right_leaf:
+                stack.append(node.right_leaf)
+
+
+    def delete(self, val):
+        """Delete the Node containing the given value."""
+        node_holder = [node for node in self._delete_helper()]
+        for node in node_holder:
+            if node.val == val:
+                node_holder.remove(node)
+        self._root.left_leaf = None
+        self._root.right_leaf = None
+        self._root = None
+        [self.insert(node.val) for node in node_holder]
+
+    def _delete_helper(self):
+        """Return a generator that will yield the Tree's values using breadth-first traversal."""
+        stack = [self._root]
+        while stack:
+            node = stack[0]
+            stack = stack[1:]
+            yield node
             if node.left_leaf:
                 stack.append(node.left_leaf)
             if node.right_leaf:
