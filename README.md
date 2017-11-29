@@ -36,16 +36,17 @@ or [Facebook](https://www.facebook.com/hcodydibble).
 
 **Binary Search Tree**
 
-- `.insert()` - O(n)
-- `.search()` - O(n)
+- `.insert(val)` - O(n)
+- `.search(val)` - O(n)
 - `.size()` - O(1)
 - `.balance()` - O(1)
 - `.depth()` - O(1)
-- `.contains()` - O(n)
+- `.contains(val)` - O(n)
 - `.in_order()` - O(n)
-- `pre_order()` - O(n)
+- `.pre_order()` - O(n)
 - `.post_order()` - O(n)
-- `breadth_first()`- O(n)
+- `.breadth_first()`- O(n)
+- `.delete(val)` - O(n)
 
 (It seems most of these will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
 
