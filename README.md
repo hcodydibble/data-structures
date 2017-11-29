@@ -48,3 +48,23 @@ or [Facebook](https://www.facebook.com/hcodydibble).
 - `breadth_first()`- O(n)
 
 (It seems most of these will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
+
+# JavaScript Data Structures
+
+**Installation**:
+
+Same as with my Python data structures, if you feel like pulling this down and playing around with it there's only a few things to do!
+
+- `$ git clone https://github.com/hcodydibble/data-structures.git`
+- `$ cd data-structures/js/`
+- `$ npm install data-structures`
+
+**Tests***:
+
+This turned out to be waaaay easier than I thought. Since npm init gives you script commands you just need to type the following (and make sure you're still in the js/ directory)
+
+`$ npm test`
+
+And if you would like to see my actual coverage
+
+`$ npm run covered_test`
