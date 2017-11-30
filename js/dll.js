@@ -105,4 +105,5 @@ module.exports = DLL;
 
 let d = new DLL()
 d.push(1)
-console.log(d.head.data)
+d.remove(1)
+console.log(d.head)
