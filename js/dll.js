@@ -42,8 +42,9 @@ class DLL{
             this.head = null
             this.tail = null
         }
+        let message = {failure: 'Failure: No such Node in the list.'}
         if(!this.head){
-            return undefined;
+            throw new Error(message.failure);
         }
         let output = this.head.data
         this.head = this.head.nxt
@@ -61,8 +62,9 @@ class DLL{
             this.head = null
             this.tail = null
         }
+        let message = {failure: 'Failure: No such Node in the list.'}
         if(!this.tail){
-            return undefined;
+            throw new Error(message.failure);
         }
         let output = this.tail.data
         this.tail = this.tail.prev
@@ -102,8 +104,3 @@ class DLL{
 }
 
 module.exports = DLL;
-
-let d = new DLL()
-d.push(1)
-d.remove(1)
-console.log(d.head)

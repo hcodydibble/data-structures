@@ -33,8 +33,7 @@ describe('dll.js tests', function() {
     it('pop removes head', function(){
         let dll = new DLL()
         dll.push('val')
-        let ayy = dll.pop()
-        expect(ayy.data).to.be.string('val');
+        expect(dll.pop()).to.be.string('val');
     });
 
     it('pop moves head along', function(){
@@ -45,9 +44,9 @@ describe('dll.js tests', function() {
         expect(dll.head.data).to.equal('val');
     });
 
-    it('pop returns undefined on empty list', function(){
+    it('pop throws error on empty list', function(){
         let dll = new DLL()
-        expect(dll.pop()).to.be.undefined;
+        expect(dll.pop).to.throw(Error);
     });
 
     it('append adds tail', function(){
@@ -71,6 +70,11 @@ describe('dll.js tests', function() {
         dll.shift()
         expect(dll.tail.data).to.be.string('idk');
     });
+
+    it('shift throws error on empty list', function(){
+        let dll = new DLL()
+        expect(dll.shift).to.throw(Error);
+    })
 
     it('empty list remove returns string', function(){
         let dll = new DLL()
