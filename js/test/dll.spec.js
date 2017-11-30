@@ -34,7 +34,7 @@ describe('dll.js tests', function() {
         let dll = new DLL()
         dll.push('val')
         let ayy = dll.pop()
-        expect(ayy.data).to.be.string('val');
+        expect(ayy).to.be.string('val');
     });
 
     it('pop moves head along', function(){

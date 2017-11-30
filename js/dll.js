@@ -45,7 +45,7 @@ class DLL{
         if(!this.head){
             return undefined;
         }
-        let output = this.head
+        let output = this.head.data
         this.head = this.head.nxt
         if(this.head){
             this.head.prev = null
@@ -64,7 +64,7 @@ class DLL{
         if(!this.tail){
             return undefined;
         }
-        let output = this.tail
+        let output = this.tail.data
         this.tail = this.tail.prev
         if(this.tail){
             this.tail.nxt = null
