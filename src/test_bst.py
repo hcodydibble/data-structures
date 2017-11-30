@@ -135,3 +135,14 @@ def test_post_order_traversal_returns_correct_order(traversal_bst):
 def test_breadth_first_traversal_returns_correct_order(traversal_bst):
     """Test that the pre-order traversal returns values in the correct order."""
     assert [i for i in traversal_bst.breadth_first()] == [7, 1, 9, 0, 3, 8, 10, 2, 5, 4, 6]
+
+
+def test_delete_helper_yields_something(traversal_bst):
+    """Test that _delete_helper does the same things as breadth_first."""
+    assert traversal_bst._delete_helper()
+
+
+def test_delete_removes_node(traversal_bst):
+    """Test that delete removes the Node containing the given value."""
+    traversal_bst.delete(5)
+    assert [i for i in traversal_bst.in_order()] == [0, 1, 2, 3, 4, 6, 7, 8, 9, 10]
