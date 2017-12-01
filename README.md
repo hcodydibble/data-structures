@@ -44,6 +44,16 @@ To run the tests (and to see my amazing coverage and all those precious precious
 - `.size()` - O(1)
 - `.remove(val)` - O(n)
 
+**Deque**:
+
+- `.append(val)` - O(1)
+- `.appendleft(val)` - O(1)
+- `.pop()` - O(1)
+- `.popleft()` - O(1)
+- `.peek()` - O(1)
+- `.peekleft()` - O(1)
+- `.size()` - O(1)
+
 **Binary Search Tree**
 
 - `.insert(val)` - O(n)
