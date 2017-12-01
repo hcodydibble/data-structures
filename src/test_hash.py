@@ -36,13 +36,15 @@ def test_xor_style_set(xor_hash):
     assert xor_hash.get('apple')
 
 
-# def test_sax_style_set(add_hash):
-#     """Test that set works with sax style."""
-#     add_hash.set('apple', 'apple', 'sax')
-#     assert add_hash.get('apple', 'sax')
+def test_sax_style_set(sax_hash):
+    """Test that set works with sax style."""
+    sax_hash.set('apple', 'apple')
+    assert sax_hash.get('apple')
 
 
-# def test_hash_method_raises_error(add_hash):
-#     """Test that _hash methods raises ValueError if given style not available."""
-#     with pytest.raises(ValueError):
-#         add_hash.set('apple', 'apple', 'break')
+def test_hash_method_raises_error():
+    """Test that _hash methods raises ValueError if given style not available."""
+    from hash import Hash
+    h = Hash(style='break')
+    with pytest.raises(ValueError):
+        h.set('apple', 'apple')

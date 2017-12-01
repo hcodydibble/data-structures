@@ -56,12 +56,12 @@ def add_hash():
 @pytest.fixture
 def xor_hash():
     from hash import Hash
-    h = Hash(hash_style='xor')
+    h = Hash(style='xor')
     return h
 
 
 @pytest.fixture
 def sax_hash():
     from hash import Hash
-    h = Hash(hash_style='sax')
+    h = Hash(style='sax')
     return h
