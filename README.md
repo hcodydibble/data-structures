@@ -70,6 +70,13 @@ To run the tests (and to see my amazing coverage and all those precious precious
 
 (It seems most of the Binary Tree will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
 
+**Hash Table**:
+
+- `.set(key, val)` - O(n)
+- `.get(key` - O(n)
+- `._hash(key, style)` -O(n)
+
+
 ## JavaScript Data Structures
 
 **Installation**:

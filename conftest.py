@@ -1,7 +1,6 @@
 """Fixtures for data structure tests."""
 import pytest
 
-
 @pytest.fixture
 def empty_bst():
     from bst import Tree
@@ -45,3 +44,24 @@ def empty_deq():
     from deque import Deque
     d = Deque()
     return d
+
+
+@pytest.fixture
+def add_hash():
+    from hash import Hash
+    h = Hash()
+    return h
+
+
+@pytest.fixture
+def xor_hash():
+    from hash import Hash
+    h = Hash(hash_style='xor')
+    return h
+
+
+@pytest.fixture
+def sax_hash():
+    from hash import Hash
+    h = Hash(hash_style='sax')
+    return h
