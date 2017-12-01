@@ -12,7 +12,11 @@ class Queue{
     }
 
     dequeue(){
-        return this.dll.shift();
+        try{
+            return this.dll.shift();
+        }catch(e){
+            return undefined;
+        }
     }
 
     peek(){
