@@ -16,7 +16,11 @@ class Deque{
     }
 
     pop(){
+        try{
         this._dll.shift()
+        }catch(e){
+            throw new Error()
+        }
     }
 }
 
