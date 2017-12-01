@@ -17,12 +17,37 @@ class Deque{
 
     pop(){
         try{
-        this._dll.shift()
+        return this._dll.shift();
         }catch(e){
-            throw new Error()
+            throw new Error('Nothing in the Deque');
         }
+    }
+
+    popleft(){
+        try{
+            return this._dll.pop();
+        }catch(e){
+            throw new Error('Nothing in the Deque');
+        }
+    }
+
+    peek(){
+        if(this._dll._counter === 0){
+            return null;
+        }
+        return this._dll.tail.data;
+    }
+
+    peekleft(){
+        if(this._dll._counter === 0){
+            return null;
+        }
+        return this._dll.head.data; 
+    }
+
+    size(){
+        return this._dll._counter
     }
 }
 
-let d = new Deque
-console.log(d.pop())
+module.exports = Deque
