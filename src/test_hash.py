@@ -30,10 +30,10 @@ def test_get_retrives_given_key_on_add_hash(add_hash):
     assert add_hash.get('apple') == 'apple'
 
 
-# def test_xor_style_set_on(add_hash):
-#     """Test that set works with xor style."""
-#     add_hash.set('apple', 'apple', 'xor')
-#     assert add_hash.get('apple', 'xor')
+def test_xor_style_set(xor_hash):
+    """Test that set works with xor style."""
+    xor_hash.set('apple', 'apple')
+    assert xor_hash.get('apple')
 
 
 # def test_sax_style_set(add_hash):
