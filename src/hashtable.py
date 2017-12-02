@@ -1,13 +1,13 @@
 """A hash table."""
 
 
-class Hash(object):
+class HashTable(object):
     """Hash table."""
 
     def __init__(self, max_size=20, style='additive'):
         """The init values of a hash table."""
         self._max = max_size
-        self._table = {}
+        self._table = [[] for _ in range(max_size)]
         self._style = style
 
 
@@ -15,16 +15,27 @@ class Hash(object):
         """Store given value and the given key."""
         if not all(isinstance(i, str) for i in [key, val]):
             raise ValueError("Only accepting strings. You inserted a {} and a {}".format(type(key).__name__, type(val).__name__))
-        hashed = self._hash(key)
-        index = hashed % self._max
-        self._table.setdefault(index, {}).setdefault(hashed, val)
+        hash_key = self._hash(key) % self._max
+        key_exists = False
+        bucket = self._table[hash_key]
+        for i, kv in enumerate(bucket):
+            k, v = kv
+            if key == k:
+                key_exists = True
+                break
+        if key_exists:
+            bucket[i] = ((key, val))
+        else:
+            bucket.append((key, val))
 
     def get(self, key):
         """Return value attached to given key."""
-        hashed = self._hash(key)
-        index = hashed % self._max
-        table_index = self._table[index]
-        return table_index[hashed]
+        hash_key = self._hash(key) % self._max
+        bucket = self._table[hash_key]
+        for i, kv in enumerate(bucket):
+            k, v = kv
+            return v
+        raise KeyError("Key not in hash table.")
 
     def _hash(self, key):
         """Hash the given key."""

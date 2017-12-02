@@ -48,20 +48,20 @@ def empty_deq():
 
 @pytest.fixture
 def add_hash():
-    from hash import Hash
-    h = Hash()
+    from hashtable import HashTable
+    h = HashTable()
     return h
 
 
 @pytest.fixture
 def xor_hash():
-    from hash import Hash
-    h = Hash(style='xor')
+    from hashtable import HashTable
+    h = HashTable(style='xor')
     return h
 
 
 @pytest.fixture
 def sax_hash():
-    from hash import Hash
-    h = Hash(style='sax')
+    from hashtable import HashTable
+    h = HashTable(style='sax')
     return h

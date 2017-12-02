@@ -73,7 +73,7 @@ To run the tests (and to see my amazing coverage and all those precious precious
 **Hash Table**:
 
 - `.set(key, val)` - O(n)
-- `.get(key` - O(n)
+- `.get(key` - O(1)
 - `._hash(key, style)` -O(n)
 
 
