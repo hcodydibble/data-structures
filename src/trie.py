@@ -23,6 +23,8 @@ class TrieTree(object):
 
     def insert(self, string):
         """Insert given string into the Trie tree."""
+        if not isinstance(string, str):
+            raise ValueError("Strings only.")
         curr = self.head
         word_finished = True
         string = string.lower()
