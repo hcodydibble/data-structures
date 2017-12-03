@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/hcodydibble/data-structures.svg?branch=master)](https://travis-ci.org/hcodydibble/data-structures)[![Coverage Status](https://coveralls.io/repos/github/hcodydibble/data-structures/badge.svg?branch=master)](https://coveralls.io/github/hcodydibble/data-structures?branch=master)
 
-#Data Structures
+# Data Structures
 
 This repo is here to hold all the data structures I write, or at least attempt to write, in my never-ending
 pursuit of knowledge in the world of development. Previous works were done with [Adrienne](https://github.com/adriennekarnoski)
