@@ -38,3 +38,10 @@ def filled_dll():
     [dll.push(x) for x in range(1, 3)]
     [dll.append(x) for x in range(3, 6)]
     return dll
+
+
+@pytest.fixture
+def empty_deq():
+    from deque import Deque
+    d = Deque()
+    return d

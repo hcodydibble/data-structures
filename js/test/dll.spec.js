@@ -33,7 +33,8 @@ describe('dll.js tests', function() {
     it('pop removes head', function(){
         let dll = new DLL()
         dll.push('val')
-        expect(dll.pop()).to.be.string('val');
+        let ayy = dll.pop()
+        expect(ayy).to.be.string('val');
     });
 
     it('pop moves head along', function(){
