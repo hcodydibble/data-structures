@@ -65,3 +65,10 @@ def sax_hash():
     from hashtable import HashTable
     h = HashTable(style='sax')
     return h
+
+
+@pytest.fixture
+def empty_trie():
+    from trie import TrieTree
+    trie = TrieTree()
+    return trie

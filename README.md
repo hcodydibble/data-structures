@@ -68,7 +68,12 @@ To run the tests (and to see my amazing coverage and all those precious precious
 - `.breadth_first()`- O(n)
 - `.delete(val)` - O(n)
 
-(It seems most of the Binary Tree will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
+**Trie Tree**:
+
+- `.insert(string)` - O(n)
+- `.contains(string)` - O(n)
+- `.size()` - O(1)
+- `.remove(string)` - O(n)
 
 **Hash Table**:
 
