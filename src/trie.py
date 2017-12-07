@@ -3,8 +3,9 @@
 
 class Node(object):
 
-    def __init__(self, label=None, data=None):
+    def __init__(self, letter=None, label=None, data=None):
         self.data = data
+        self.letter = letter
         self.children = dict()
 
     def add_children(self, key, data=None):
@@ -41,6 +42,7 @@ class TrieTree(object):
             while i < len(string):
                 curr.add_children(string[i])
                 curr = curr.children[string[i]]
+                curr.letter = string[i]
                 i += 1
         curr.data = string
 
@@ -83,3 +85,38 @@ class TrieTree(object):
                 curr.data = curr.children[string[i]].data[:-1]
                 del curr.children[string[i]]
                 self._remove_helper(curr.data)
+
+    def traversal(self, start):
+        curr = self._traversal_helper(start)
+        visit = []
+        path = []
+        while True:
+            try:
+                children = curr.children.keys()
+                for child in children:
+                    if child not in path:
+                        visit.insert(0, child)
+                if curr.letter is not None:
+                    path.append(curr.letter)
+                    # yield curr.letter
+                if curr.children:
+                    # import pdb; pdb.set_trace()
+                    curr = curr.children[visit.pop(0)]
+                else:
+                    curr = self._traversal_helper(visit.pop(0))
+            except IndexError:
+                break
+        return path
+                
+    def _traversal_helper(self, start):
+        if start == '':
+            return self.head
+        curr = self.head
+        while curr:
+            if start in curr.children:
+                return curr
+            key = list(curr.children.keys())
+            if len(key) > 1:
+                curr = curr.children[key.pop]
+            else:
+                curr = curr.children[key[0]]
