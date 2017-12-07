@@ -101,3 +101,13 @@ This turned out to be waaaay easier than I thought. Since npm init gives you scr
 And if you would like to see my actual coverage
 
 `$ npm run covered_test`
+
+## Sorting Algorithms
+
+We are now adding sorting algorithm happy fun times to this repo so under this section I will try and add a bit of info about the algorithm and what I feel the Big O notation of it is.
+
+**Bubble Sort**:
+
+This sorting algorithm will run through a given list of numbers and move a number down until it is no longer larger than the next number coming it. It will then continue to move down the list switching numbers until it comes to the end, where it will then proceed to the very beginning of the list and do it all over again until the entire list is sorted smallest to largest (it could easily switched to run largest to smallest as well).
+
+- **Big O Notation**: The time complexity of a bubble sort at worst case is going to be O(n^2).
