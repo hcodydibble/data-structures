@@ -7,7 +7,7 @@ def bubble_sort(a_list, loop_count=1):
         if a_list[i] > a_list[i + 1]:
             a_list[i], a_list[i + 1] = a_list[i + 1], a_list[i]
         else:
-            continue
+            continue  # pragma: no cover
         loop_count += 1
         bubble_sort(a_list, loop_count)
     return a_list
