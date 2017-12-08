@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/hcodydibble/data-structures.svg?branch=master)](https://travis-ci.org/hcodydibble/data-structures)[![Coverage Status](https://coveralls.io/repos/github/hcodydibble/data-structures/badge.svg?branch=master)](https://coveralls.io/github/hcodydibble/data-structures?branch=master)
 
-#Data Structures
+# Data Structures
 
 This repo is here to hold all the data structures I write, or at least attempt to write, in my never-ending
 pursuit of knowledge in the world of development. Previous works were done with [Adrienne](https://github.com/adriennekarnoski)
@@ -68,7 +68,19 @@ To run the tests (and to see my amazing coverage and all those precious precious
 - `.breadth_first()`- O(n)
 - `.delete(val)` - O(n)
 
-(It seems most of the Binary Tree will end up as O(log n) once the tree is balanced but for now I believe these are the big o notations.)
+**Trie Tree**:
+
+- `.insert(string)` - O(n)
+- `.contains(string)` - O(n)
+- `.size()` - O(1)
+- `.remove(string)` - O(n)
+
+**Hash Table**:
+
+- `.set(key, val)` - O(n)
+- `.get(key` - O(1)
+- `._hash(key, style)` -O(n)
+
 
 ## JavaScript Data Structures
 
@@ -89,3 +101,13 @@ This turned out to be waaaay easier than I thought. Since npm init gives you scr
 And if you would like to see my actual coverage
 
 `$ npm run covered_test`
+
+## Sorting Algorithms
+
+We are now adding sorting algorithm happy fun times to this repo so under this section I will try and add a bit of info about the algorithm and what I feel the Big O notation of it is.
+
+**Bubble Sort**:
+
+This sorting algorithm will run through a given list of numbers and move a number down until it is no longer larger than the next number coming it. It will then continue to move down the list switching numbers until it comes to the end, where it will then proceed to the very beginning of the list and do it all over again until the entire list is sorted smallest to largest (it could easily switched to run largest to smallest as well).
+
+- **Big O Notation**: The time complexity of a bubble sort at worst case is going to be O(n^2).

@@ -1,3 +1,5 @@
 [run]
 omit = src/test_*
+       src/hash.py
+       src/linked_list.py
     
