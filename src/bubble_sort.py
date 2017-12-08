@@ -5,11 +5,9 @@ def bubble_sort(a_list, loop_count=1):
     """Bubble sort function."""
     for i in range(len(a_list) - loop_count):
         if a_list[i] > a_list[i + 1]:
-            tmp = a_list[i + 1]
-            a_list[i + 1] = a_list[i]
-            a_list[i] = tmp
+            a_list[i], a_list[i + 1] = a_list[i + 1], a_list[i]
         else:
-            continue
+            continue  # pragma: no cover
         loop_count += 1
         bubble_sort(a_list, loop_count)
     return a_list
