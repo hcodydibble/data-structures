@@ -5,11 +5,9 @@ def insertion_sort(a_list):
     """Insertion sort function."""
     if isinstance(a_list, list):
         for i in range(len(a_list) - 1):
-            if a_list[i] < a_list[i - 1]:
-                for x in range(i + 1, 0, -1):
-                    a_list[x - 1], a_list[x] = a_list[x], a_list[x - 1]
-            else:
-                continue
+            for j in range(i + 1, 0, -1):
+                if a_list[j] < a_list[j - 1]:
+                    a_list[j - 1], a_list[j] = a_list[j], a_list[j - 1]
         return a_list
     else:
         raise ValueError("Lists only")
@@ -28,3 +26,4 @@ if __name__ == '__main__':  # pragma: no cover
     print('Best case time: ', best_case)
     print('Worst case time: ', worst_case)
     print('Big numbers list time:', big_numbers)
+    
