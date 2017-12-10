@@ -47,3 +47,28 @@ def test_insertion_sort_raises_error():
     from insertion_sort import insertion_sort
     with pytest.raises(ValueError):
         insertion_sort('WATCH ME BREAK IT LUL')
+
+"""The following are test functions for the merge sort algorithm."""
+
+MERGE_SORT_TESTS = [
+    ([28, 23, 32, 4, 6, 33, 13, 34, 17, 24], [4, 6, 13, 17, 23, 24, 28, 32, 33, 34]),
+    ([14, 18, 3, 6, 5, 23, 37, 30, 36, 28, 28, 24, 13, 15, 1], [1, 3, 5, 6, 13, 14, 15, 18, 23, 24, 28, 28, 30, 36, 37]),
+    ([-32, -14, 0, -10, -12, -31, -18, -11, -21, -6], [-32, -31, -21, -18, -14, -12, -11, -10, -6, 0]),
+    ([20, 37, 36, 40, 2, 2, 21, 36, 28, 27, 5, 26, 34, 10, 31], [2, 2, 5, 10, 20, 21, 26, 27, 28, 31, 34, 36, 36, 37, 40]),
+    ([6.12, 22.82, 14.23, 10.01, 4.84, 37.1, 34.72, 37.05, 26.78, 10.32, 4.18, 16.18, 19.018, 1.53, 1.72], [1.53, 1.72, 4.18, 4.84, 6.12, 10.01, 10.32, 14.23, 16.18, 19.018, 22.82, 26.78, 34.72, 37.05, 37.1]),
+    ([39, 458, 100, 379, 1, 167, 75, 208, 3, 275, 100, 234, 36, 198, 39, 173, 34, 259, 90, 105], [1, 3, 34, 36, 39, 39, 75, 90, 100, 100, 105, 167, 173, 198, 208, 234, 259, 275, 379, 458]),
+]
+
+
+@pytest.mark.parametrize('the_list, result', MERGE_SORT_TESTS)
+def test_merge_sort_on_various_lists(the_list, result):
+    """Same as the others honestly."""
+    from merge_sort import merge_sort
+    assert merge_sort(the_list) == result
+
+
+def test_merge_sort_raises_error():
+    """Test that merge sort will raise an error."""
+    from merge_sort import merge_sort
+    with pytest.raises(ValueError):
+        merge_sort('BROKE AF')
