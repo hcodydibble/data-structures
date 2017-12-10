@@ -97,16 +97,13 @@ class TrieTree(object):
                     if child not in path:
                         visit.insert(0, child)
                 if curr.letter is not None:
-                    path.append(curr.letter)
-                    # yield curr.letter
+                    yield curr.letter
                 if curr.children:
-                    # import pdb; pdb.set_trace()
                     curr = curr.children[visit.pop(0)]
                 else:
                     curr = self._traversal_helper(visit.pop(0))
             except IndexError:
                 break
-        return path
                 
     def _traversal_helper(self, start):
         if start == '':
