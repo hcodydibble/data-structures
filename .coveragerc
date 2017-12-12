@@ -2,4 +2,5 @@
 omit = src/test_*
        src/hash.py
        src/linked_list.py
+       src/que_.py
     
