@@ -4,10 +4,8 @@
 def radix_sort(a_list):
     """Radix sort algorithm."""
     if isinstance(a_list, list):
-        num_bucket = dict()
+        num_bucket = {x: [] for x in range(10)}
         output = []
-        for i in range(10):
-            num_bucket.setdefault(i, [])
         str_list = [str(x) for x in a_list]
         for x in range(len(str(max(a_list)))):
             for num in str_list:
