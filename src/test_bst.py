@@ -119,7 +119,7 @@ def test_in_order_traversal_yields_something(traversal_bst):
 def test_in_order_traversal_returns_value(traversal_bst):
     """Test that the in-order traversal returns the first value."""
     value = traversal_bst.in_order()
-    assert next(value) == 0
+    assert next(value) == 1
 
 
 def test_in_order_traversal_returns_correct_order(traversal_bst):
@@ -142,7 +142,33 @@ def test_breadth_first_traversal_returns_correct_order(traversal_bst):
     assert [i for i in traversal_bst.breadth_first()] == [7, 1, 9, 3, 8, 10, 2, 5, 4, 6]
 
 
-def test_delete_removes_node(traversal_bst):
+def test_delete_removes_node(delete_bst):
     """Test that delete removes the Node containing the given value."""
-    traversal_bst.delete(5)
-    assert [i for i in traversal_bst.in_order()] == [1, 2, 3, 4, 6, 7, 8, 9, 10]
+    delete_bst.delete(5)
+    assert delete_bst.search(5) == None
+
+
+def test_delete_on_no_child_node(delete_bst):
+    """Test delete doesn't break on a node with no children."""
+    delete_bst.delete(1)
+    assert delete_bst.search(1) == None
+
+
+def test_delete_on_one_child_node(delete_bst):
+    """Test delete doesn't break on a node with one child."""
+    delete_bst.delete(28)
+    assert delete_bst.search(28) == None
+
+
+def test_delete_one_two_children_node(delete_bst):
+    """Test delete doesn't break on a node with two children."""
+    delete_bst.delete(10)
+    assert delete_bst.search(10) == None
+
+
+def test_one_child_delete_for_coverage(delete_bst):
+    """."""
+    delete_bst.delete(27)
+    delete_bst.insert(29)
+    delete_bst.delete(28)
+    assert delete_bst.search(28) == None

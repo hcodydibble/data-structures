@@ -185,8 +185,10 @@ class Tree(object):
 
     def _one_child_delete(self, node):
         """Helper method to delete given node with one child."""
-        child = node.right_leaf = node.left_leaf
-        import pdb; pdb.set_trace()
+        if node.right_leaf:
+            child = node.right_leaf
+        else:
+            child = node.left_leaf
         if node.parent.left_leaf == node:
             child.parent = node.parent
             node.parent.left_leaf = child
