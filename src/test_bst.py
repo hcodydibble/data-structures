@@ -76,7 +76,12 @@ def test_right_balance_returns_negative(rooted_bst):
     """Test that if Tree is right heavy the balance returns a negative integer."""
     rooted_bst.insert(12)
     rooted_bst.insert(11)
-    assert rooted_bst.balance() == -1
+    assert rooted_bst.balance() == -2
+
+
+def test_tree_alerts_user_of_multiple_value(rooted_bst):
+    """Test that the Tree will let the user know if the value they are trying to insert is already in the tree."""
+    assert rooted_bst.insert(10) == 'Node already in Tree'
 
 
 def test_contains_returns_true_on_root(rooted_bst):
@@ -114,35 +119,68 @@ def test_in_order_traversal_yields_something(traversal_bst):
 def test_in_order_traversal_returns_value(traversal_bst):
     """Test that the in-order traversal returns the first value."""
     value = traversal_bst.in_order()
-    assert next(value) == 0
+    assert next(value) == 1
 
 
 def test_in_order_traversal_returns_correct_order(traversal_bst):
     """Test that the in-order traversal return values in the correct order."""
-    assert [i for i in traversal_bst.in_order()] == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    assert [i for i in traversal_bst.in_order()] == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 
 def test_pre_order_traversal_returns_correct_order(traversal_bst):
     """Test that the pre-order traversal returns values in the correct order."""
-    assert [i for i in traversal_bst.pre_order()] == [7, 1, 0, 3, 2, 5, 4, 6, 9, 8, 10]
+    assert [i for i in traversal_bst.pre_order()] == [7, 1, 3, 2, 5, 4, 6, 9, 8, 10]
 
 
 def test_post_order_traversal_returns_correct_order(traversal_bst):
     """Test that the pre-order traversal returns values in the correct order."""
-    assert [i for i in traversal_bst.post_order()] == [0, 2, 4, 6, 5, 3, 1, 8, 10, 9, 7]
+    assert [i for i in traversal_bst.post_order()] == [2, 4, 6, 5, 3, 1, 8, 10, 9, 7]
 
 
 def test_breadth_first_traversal_returns_correct_order(traversal_bst):
     """Test that the pre-order traversal returns values in the correct order."""
-    assert [i for i in traversal_bst.breadth_first()] == [7, 1, 9, 0, 3, 8, 10, 2, 5, 4, 6]
+    assert [i for i in traversal_bst.breadth_first()] == [7, 1, 9, 3, 8, 10, 2, 5, 4, 6]
 
 
-def test_delete_helper_yields_something(traversal_bst):
-    """Test that _delete_helper does the same things as breadth_first."""
-    assert traversal_bst._delete_helper()
-
-
-def test_delete_removes_node(traversal_bst):
+def test_delete_removes_node(delete_bst):
     """Test that delete removes the Node containing the given value."""
-    traversal_bst.delete(5)
-    assert [i for i in traversal_bst.in_order()] == [0, 1, 2, 3, 4, 6, 7, 8, 9, 10]
+    delete_bst.delete(5)
+    assert delete_bst.search(5) == None
+
+
+def test_delete_on_no_child_node(delete_bst):
+    """Test delete doesn't break on a node with no children."""
+    delete_bst.delete(1)
+    assert delete_bst.search(1) == None
+
+
+def test_delete_on_one_child_node(delete_bst):
+    """Test delete doesn't break on a node with one child."""
+    delete_bst.delete(28)
+    assert delete_bst.search(28) == None
+
+
+def test_delete_one_two_children_node(delete_bst):
+    """Test delete doesn't break on a node with two children."""
+    delete_bst.delete(10)
+    assert delete_bst.search(10) == None
+
+
+def test_delete_on_root_node(rooted_bst):
+    """Test delete doesn't break on root node deletion."""
+    rooted_bst.delete(10)
+    assert rooted_bst._root == None
+
+
+def test_one_child_delete_for_coverage(delete_bst):
+    """Test to try and hit single lines for more coverage."""
+    delete_bst.insert(43)
+    delete_bst.delete(42)
+    assert delete_bst.search(42) == None
+
+
+def test_no_child_delete_for_coverage(delete_bst):
+    """Test to try and hit single lines for more coverage."""
+    delete_bst.delete(11)
+    assert delete_bst.search(11) == None
+
