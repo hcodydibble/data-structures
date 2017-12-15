@@ -166,9 +166,21 @@ def test_delete_one_two_children_node(delete_bst):
     assert delete_bst.search(10) == None
 
 
+def test_delete_on_root_node(rooted_bst):
+    """Test delete doesn't break on root node deletion."""
+    rooted_bst.delete(10)
+    assert rooted_bst._root == None
+
+
 def test_one_child_delete_for_coverage(delete_bst):
-    """."""
-    delete_bst.delete(27)
-    delete_bst.insert(29)
-    delete_bst.delete(28)
-    assert delete_bst.search(28) == None
+    """Test to try and hit single lines for more coverage."""
+    delete_bst.insert(43)
+    delete_bst.delete(42)
+    assert delete_bst.search(42) == None
+
+
+def test_no_child_delete_for_coverage(delete_bst):
+    """Test to try and hit single lines for more coverage."""
+    delete_bst.delete(11)
+    assert delete_bst.search(11) == None
+
