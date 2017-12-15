@@ -82,6 +82,41 @@ To run the tests (and to see my amazing coverage and all those precious precious
 - `._hash(key, style)` -O(n)
 
 
+## Sorting Algorithms
+
+We are now adding sorting algorithm happy fun times to this repo so under this section I will try and add a bit of info about the algorithm and what I feel the Big O notation of it is.
+
+### Bubble Sort
+
+This sorting algorithm will run through a given list of numbers and move a number down until it is no longer larger than the next number coming it. It will then continue to move down the list switching numbers until it comes to the end, where it will then proceed to the very beginning of the list and do it all over again until the entire list is sorted smallest to largest (it could easily switched to run largest to smallest as well).
+
+- **Big O Notation**: The time complexity of a bubble sort at worst case is going to be O(n^2).
+
+### Insertion Sort
+
+This sorting algorithm will run through a list and check each new number it comes across against all the numbers it has already sorted to then decide where to insert it.
+
+- **Big O Notation**: The time complexity of an insertion sort at worst case is going to be O(n^2)
+
+### Merge Sort
+
+This sorting algorithm will split a down until it has 1 to 2 items (only 1 according to [visualgo](https://visualgo.net/en)) and then will build itself back up from the bottom up.
+
+- **Big O Notation**: The time complexity of a merge sort will always be O(n log n)
+
+### Quick Sort
+
+This sorting algorithm will choose a spot in a list to be the pivot point, it will then check the rest of the list and split it based on if the number is larger or smaller than the pivot number. It will continue to do this until it has two sorted lists of numbers smaller than the pivot and numbers larger than the pivot and then will smoosh them all back together.
+
+- **Big O Notation**: The time complexity of a quick sort at worst case will be O(n^2)
+
+### Radix Sort
+
+This sorting algorithm takes a list of numbers and, starting with the right most number in each number of the list, will plop them in a container. After it does that it will rebuild the list and continue to do this for however long the largest number in the list is.
+
+- **Big O Notation**: The time complexity of the radix sort at worst case is O(nk)
+
+
 ## JavaScript Data Structures
 
 **Installation**:
@@ -101,13 +136,3 @@ This turned out to be waaaay easier than I thought. Since npm init gives you scr
 And if you would like to see my actual coverage
 
 `$ npm run covered_test`
-
-## Sorting Algorithms
-
-We are now adding sorting algorithm happy fun times to this repo so under this section I will try and add a bit of info about the algorithm and what I feel the Big O notation of it is.
-
-**Bubble Sort**:
-
-This sorting algorithm will run through a given list of numbers and move a number down until it is no longer larger than the next number coming it. It will then continue to move down the list switching numbers until it comes to the end, where it will then proceed to the very beginning of the list and do it all over again until the entire list is sorted smallest to largest (it could easily switched to run largest to smallest as well).
-
-- **Big O Notation**: The time complexity of a bubble sort at worst case is going to be O(n^2).
