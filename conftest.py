@@ -20,5 +20,5 @@ def rooted_bst():
 @pytest.fixture
 def traversal_bst():
     from bst import Tree
-    tree = Tree([7, 1, 9, 0, 3, 8, 10, 2, 5, 4, 6])
+    tree = Tree([7, 1, 9, 3, 8, 10, 2, 5, 4, 6])
     return tree

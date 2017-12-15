@@ -162,85 +162,60 @@ class Tree(object):
 
     def delete(self, val):
         """Delete the Node containing the given value."""
-        """Keeping this because it is hilarious to me."""
-        node_holder = [node for node in self._delete_helper()]
-        for node in node_holder:
-            if node.val == val:
-                node_holder.remove(node)
-        self._root.left_leaf = None
-        self._root.right_leaf = None
-        self._root = None
-        [self.insert(node.val) for node in node_holder]
+        if val == self._root.val:
+            self._root = None
+        node_to_delete = self.search(val)
+        if node_to_delete:
+            if node_to_delete.left_leaf and node_to_delete.right_leaf:
+                self._two_children_delete(node_to_delete)
+                self._size -= 1
+            elif node_to_delete.left_leaf or node_to_delete.right_leaf:
+                self._one_child_delete(node_to_delete)
+                self._size -= 1
+            else:
+                self._no_child_delete(node_to_delete)
+                self._size -= 1
 
-    def _delete_helper(self):
-        """Return a generator that will yield the Tree's nodes using breadth-first traversal."""
-        stack = [self._root]
-        while stack:
-            node = stack[0]
-            stack = stack[1:]
-            yield node
-            if node.left_leaf:
-                stack.append(node.left_leaf)
-            if node.right_leaf:
-                stack.append(node.right_leaf)
-        # if self.search(val):
-        #     delete_me = self.search(val)
-        # else:
-        #     raise ValueError('No such Node in the Tree.')
-        # curr = delete_me
-        # if curr.right_leaf:
-        #     curr = curr.right_leaf
-        #     while curr.left_leaf:
-        #         curr = curr.left_leaf
-        #     if curr.right_leaf:
-        #         curr.parent.right_leaf = curr.right_leaf
-        #         curr.right_leaf.parent = curr.parent
-        #     elif curr.left_leaf:
-        #         curr.parent.right_leaf = curr.left_leaf
-        #         curr.left_leaf.parent = curr.parent
-        #     else:
-        #         curr.parent.left_leaf = None
-        #     curr.right_leaf = delete_me.right_leaf
-        #     curr.parent = delete_me.parent
-        #     delete_me.parent.right_leaf = curr
-        #     if delete_me.left_leaf != curr:
-        #         curr.left_leaf = delete_me.left_leaf
-        # elif curr.left_leaf:
-        #     curr = curr.left_leaf
-        #     while curr.right_leaf:
-        #         curr = curr.right_leaf
-        #     if curr.right_leaf:
-        #         curr.parent.right_leaf = curr.right_leaf
-        #         curr.right_leaf.parent = curr.parent
-        #     elif curr.left_leaf:
-        #         curr.parent.right_leaf = curr.left_leaf
-        #         curr.left_leaf.parent = curr.parent
-        #     else:
-        #         curr.right_leaf.parent = None
-        #     curr.right_leaf = delete_me.right_leaf 
-        #     curr.parent = delete_me.parent
-        #     delete_me.parent.right_leaf = curr
-        #     if delete_me.left_leaf != curr:
-        #         curr.left_leaf = delete_me.left_leaf
-        # else:
-        #     if delete_me.val < delete_me.parent.val:
-        #         delete_me.parent.left_leaf = None
-        #     else:
-        #         delete_me.parent.right_leaf = None
-        # self._size -= 1
+    def _no_child_delete(self, node):
+        """Helper method to delete given node with no children."""
+        if node.parent.left_leaf == node:
+            node.parent.left_leaf = None
+        else:
+            node.parent.right_leaf = None
+
+    def _one_child_delete(self, node):
+        """Helper method to delete given node with one child."""
+        child = node.right_leaf = node.left_leaf
+        import pdb; pdb.set_trace()
+        if node.parent.left_leaf == node:
+            child.parent = node.parent
+            node.parent.left_leaf = child
+        else:
+            child.parent = node.parent
+            node.parent.right_leaf = child
+
+    def _two_children_delete(self, node):
+        left_child, right_child = node.left_leaf, node.right_leaf
+        right_child.left_leaf = left_child
+        left_child.parent = right_child
+        right_child.parent = node.parent
+        if node.parent.left_leaf == node:
+            node.parent.left_leaf = right_child
+        else:
+            node.parent.right_leaf = right_child
 
 
-# if __name__ == '__main__':  # pragma: no cover
-#     import timeit
+if __name__ == '__main__':  # pragma: no cover
+    import timeit
 
-#     l_imba = Tree([6, 5, 4, 3, 2, 1])
-#     r_imba = Tree([1, 2, 3, 4, 5, 6])
-#     sample_tree = Tree([20, 12, 10, 1, 11, 16, 30, 42, 28, 27])
+    l_imba = Tree([6, 5, 4, 3, 2, 1])
+    r_imba = Tree([1, 2, 3, 4, 5, 6])
+    sample_tree = Tree([20, 12, 10, 1, 11, 16, 30, 42, 28, 27])
 
-#     l_imba = timeit.timeit("l_imba.search(5)", setup="from __main__ import l_imba")
-#     r_imba = timeit.timeit("r_imba.search(5)", setup="from __main__ import r_imba")
-#     sample_tree = timeit.timeit("sample_tree.search(8)", setup="from __main__ import sample_tree")
+    l_imba = timeit.timeit("l_imba.search(5)", setup="from __main__ import l_imba")
+    r_imba = timeit.timeit("r_imba.search(5)", setup="from __main__ import r_imba")
+    sample_tree = timeit.timeit("sample_tree.search(16)", setup="from __main__ import sample_tree")
 
-#     print('Left-Skewed Search Time: ', l_imba)
-#     print('Right-Skewed Search Time: ', r_imba)
-#     print('Balanced Search Time: ', sample_tree)
+    print('Left-Skewed Search Time: ', l_imba)
+    print('Right-Skewed Search Time: ', r_imba)
+    print('Balanced Search Time: ', sample_tree)
