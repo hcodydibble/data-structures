@@ -76,7 +76,12 @@ def test_right_balance_returns_negative(rooted_bst):
     """Test that if Tree is right heavy the balance returns a negative integer."""
     rooted_bst.insert(12)
     rooted_bst.insert(11)
-    assert rooted_bst.balance() == -1
+    assert rooted_bst.balance() == -2
+
+
+def test_tree_alerts_user_of_multiple_value(rooted_bst):
+    """Test that the Tree will let the user know if the value they are trying to insert is already in the tree."""
+    assert rooted_bst.insert(10) == 'Node already in Tree'
 
 
 def test_contains_returns_true_on_root(rooted_bst):

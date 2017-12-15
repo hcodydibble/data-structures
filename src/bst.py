@@ -25,6 +25,8 @@ class Tree(object):
 
     def insert(self, val):
         """Insert a new node into the Tree containing the given value."""
+        if self.search(val):
+            return "Node already in Tree"
         if self._root is None:
             self._root = Node(val)
             self._size += 1
@@ -36,22 +38,22 @@ class Tree(object):
                 if curr.right_leaf is None:
                     new_node.parent = curr
                     curr.right_leaf = new_node
-                    curr.right_leaf.depth = curr.depth + 1
-                    if val > self._root.val:
-                        if curr.right_leaf.depth > self.right_depth:
-                            self.right_depth += 1
+                    new_node.depth = curr.depth + 1
                     break
                 curr = curr.right_leaf
             else:
                 if curr.left_leaf is None:
                     new_node.parent = curr
                     curr.left_leaf = new_node
-                    curr.left_leaf.depth = curr.depth + 1
-                    if val < self._root.val:
-                        if curr.left_leaf.depth > self.left_depth:
-                            self.left_depth += 1
+                    new_node.depth = curr.depth + 1
                     break
                 curr = curr.left_leaf
+        if new_node.val > self._root.val:
+            if new_node.depth > self.right_depth:
+                self.right_depth += 1
+        else:
+            if new_node.depth > self.left_depth:
+                self.left_depth += 1
         self._size += 1
 
     def search(self, val):
@@ -228,18 +230,17 @@ class Tree(object):
         # self._size -= 1
 
 
+# if __name__ == '__main__':  # pragma: no cover
+#     import timeit
 
-if __name__ == '__main__':  # pragma: no cover
-    import timeit
+#     l_imba = Tree([6, 5, 4, 3, 2, 1])
+#     r_imba = Tree([1, 2, 3, 4, 5, 6])
+#     sample_tree = Tree([20, 12, 10, 1, 11, 16, 30, 42, 28, 27])
 
-    l_imba = Tree([6, 5, 4, 3, 2, 1])
-    r_imba = Tree([1, 2, 3, 4, 5, 6])
-    sample_tree = Tree([20, 12, 10, 1, 11, 16, 30, 42, 28, 27])
+#     l_imba = timeit.timeit("l_imba.search(5)", setup="from __main__ import l_imba")
+#     r_imba = timeit.timeit("r_imba.search(5)", setup="from __main__ import r_imba")
+#     sample_tree = timeit.timeit("sample_tree.search(8)", setup="from __main__ import sample_tree")
 
-    l_imba = timeit.timeit("l_imba.search(5)", setup="from __main__ import l_imba")
-    r_imba = timeit.timeit("r_imba.search(5)", setup="from __main__ import r_imba")
-    sample_tree = timeit.timeit("sample_tree.search(8)", setup="from __main__ import sample_tree")
-
-    print('Left-Skewed Search Time: ', l_imba)
-    print('Right-Skewed Search Time: ', r_imba)
-    print('Balanced Search Time: ', sample_tree)
+#     print('Left-Skewed Search Time: ', l_imba)
+#     print('Right-Skewed Search Time: ', r_imba)
+#     print('Balanced Search Time: ', sample_tree)
