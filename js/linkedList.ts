@@ -84,6 +84,3 @@ export class LinkedList{
         return displayThis.join(", ")
     }
 }
-
-let ll = new LinkedList([2, 6, 12, 100, 38, 4])
-console.log(ll.display())
