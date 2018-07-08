@@ -49,19 +49,21 @@ export class LinkedList{
         }
         return undefined
     }
-
+    
+    // Remove the given node if it exists in the Linked List, Node must be passed through by retrieving it with the Search function
     remove(node:Node): void {
         let current:Node
 
-        if(node === null)
+        if(node === null) // If the Node passed through is null (if the value searched for doesn't exist) end the function
             return
 
-        if(this.head === node){
+        if(this.head === node){ // If the passed in Node is the head node just make the head the next Node in the line, used to keep the O notation low
             this.head = this.head.next
             this.counter--
             return
         }
 
+        // This block is the same as the Search function except it will remove the given Node and reduce the counter
         current = this.head
         while(current){
             if(current.next === node){
@@ -73,6 +75,7 @@ export class LinkedList{
         }
     }
 
+    // Display all the values of the Nodes in the Linked List in string form
     display(): string {
         let current: Node = this.head
         let displayThis: number[] = []
